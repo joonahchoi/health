@@ -1,0 +1,54 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기초 루틴 입력기</title>
+  <!-- CSS 파일 연결 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 페이지 헤더 -->
+  <header>
+    <h1>기초 루틴 입력기</h1>
+  </header>
+  
+  <!-- 메인 컨텐츠 영역 -->
+  <main>
+    <section class="form-container">
+      <form id="routineForm">
+        <!-- 수면 시간 입력 (하루에 한 번의 입력으로 취침 및 기상 시간 입력) -->
+        <div class="form-group">
+          <label for="sleepTime">수면 시간 (취침 및 기상 시간):</label>
+          <input type="time" id="sleepTime" name="sleepTime" required>
+        </div>
+        <!-- 식사 시간 입력 (아침, 점심, 저녁) -->
+        <div class="form-group">
+          <label>식사 시간:</label>
+          <div class="meal-times">
+            <label for="breakfastTime">아침:</label>
+            <input type="time" id="breakfastTime" name="breakfastTime" required>
+            <label for="lunchTime">점심:</label>
+            <input type="time" id="lunchTime" name="lunchTime" required>
+            <label for="dinnerTime">저녁:</label>
+            <input type="time" id="dinnerTime" name="dinnerTime" required>
+          </div>
+        </div>
+        <!-- 운동 시간 입력 -->
+        <div class="form-group">
+          <label for="exerciseTime">운동 시간:</label>
+          <input type="time" id="exerciseTime" name="exerciseTime" required>
+        </div>
+        <!-- 데이터 제출 버튼 -->
+        <button type="submit">입력 제출</button>
+      </form>
+      <!-- 결과 출력 영역 -->
+      <div id="result"></div>
+    </section>
+  </main>
+  
+  <!-- JavaScript 파일 연결 -->
+  <script src="script.js"></script>
+</body>
+</html>
