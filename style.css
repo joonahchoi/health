@@ -1,0 +1,117 @@
+:root{
+  --bg: #fff7fb;
+  --card: #ffeef7;
+  --pink: #ff79b0;
+  --pink-dark: #ff4f8a;
+  --accent: #ff9fcf;
+  --text: #4d3b4f;
+  --muted: #7a6a78;
+  --shadow: rgba(133, 47, 86, 0.12);
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing: border-box;}
+html,body{height:100%; margin:0; background:linear-gradient(180deg,#fff7fb 0%, #fff0f6 100%); color:var(--text);}
+
+.header{
+  text-align:center;
+  padding:28px 16px 6px;
+}
+.header h1{
+  margin:0;
+  font-size:28px;
+  color:var(--pink-dark);
+  letter-spacing:0.5px;
+}
+.header .subtitle{
+  margin:8px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* 레이아웃 */
+.container{
+  max-width:1000px;
+  margin:20px auto;
+  padding:16px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:18px;
+}
+
+/* 카드 스타일 */
+.card{
+  background:linear-gradient(180deg, var(--card), #fff);
+  border-radius:14px;
+  box-shadow: 0 6px 18px var(--shadow);
+  padding:18px;
+}
+
+/* 폼 카드 */
+.form-card .form-group{
+  margin-bottom:12px;
+}
+label{ display:block; font-weight:600; margin-bottom:6px; color:var(--pink-dark); }
+input[type="time"], input[type="number"], select{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(255,79,138,0.12);
+  background:#fff;
+  font-size:15px;
+  color:var(--text);
+  outline:none;
+  transition: box-shadow .15s ease;
+}
+input[type="time"]:focus, select:focus, input[type="number"]:focus{
+  box-shadow: 0 6px 18px rgba(255,127,171,0.15);
+  border-color:var(--pink);
+}
+
+.meal-row{
+  display:flex;
+  gap:8px;
+}
+.meal-item{ flex:1; }
+
+/* 버튼 */
+.btn-row{ display:flex; gap:8px; margin-top:8px; }
+.btn{
+  flex:1;
+  padding:10px 14px;
+  border-radius:10px;
+  border: none;
+  cursor:pointer;
+  font-weight:700;
+}
+.btn.primary{
+  background: linear-gradient(180deg, var(--pink), var(--pink-dark));
+  color:white;
+  box-shadow: 0 6px 14px rgba(255,79,138,0.18);
+}
+.btn.ghost{
+  background:transparent;
+  border:1px dashed rgba(255,127,171,0.3);
+  color:var(--pink-dark);
+}
+
+/* 결과 카드 */
+.result-card h2{ margin:0 0 10px; color:var(--pink-dark); }
+.chart-wrap{
+  width:100%;
+  height:320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.result-text{ margin-top:12px; color:var(--muted); font-size:14px; }
+
+/* 반응형 */
+@media (max-width:880px){
+  .container{ grid-template-columns: 1fr; padding:12px; }
+  .chart-wrap{ height:260px; }
+}
+
+/* 작은 포인트 */
+.emoji{ font-size:22px; margin-left:8px; }
+.hint{ color:var(--muted); font-size:12px; display:block; margin-top:6px; }
