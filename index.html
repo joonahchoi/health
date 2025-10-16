@@ -1,54 +1,93 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>기초 루틴 입력기</title>
-  <!-- CSS 파일 연결 -->
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>기초 루틴 입력기 🌸</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- 페이지 헤더 -->
-  <header>
-    <h1>기초 루틴 입력기</h1>
+  <header class="header">
+    <h1>기초 루틴 입력기 <span class="emoji">🌸💖</span></h1>
+    <p class="subtitle">하루 루틴을 예쁘게 정리해봐요, 주나쌤TV님! 😊</p>
   </header>
-  
-  <!-- 메인 컨텐츠 영역 -->
-  <main>
-    <section class="form-container">
-      <form id="routineForm">
-        <!-- 수면 시간 입력 (하루에 한 번의 입력으로 취침 및 기상 시간 입력) -->
+
+  <main class="container">
+    <section class="card form-card">
+      <form id="routineForm" aria-label="루틴 입력 폼">
+        <!-- 수면: 취침/기상 -->
         <div class="form-group">
-          <label for="sleepTime">수면 시간 (취침 및 기상 시간):</label>
-          <input type="time" id="sleepTime" name="sleepTime" required>
+          <label for="sleepStart">취침 시간 🌙</label>
+          <input type="time" id="sleepStart" name="sleepStart" required>
         </div>
-        <!-- 식사 시간 입력 (아침, 점심, 저녁) -->
         <div class="form-group">
-          <label>식사 시간:</label>
-          <div class="meal-times">
-            <label for="breakfastTime">아침:</label>
-            <input type="time" id="breakfastTime" name="breakfastTime" required>
-            <label for="lunchTime">점심:</label>
-            <input type="time" id="lunchTime" name="lunchTime" required>
-            <label for="dinnerTime">저녁:</label>
-            <input type="time" id="dinnerTime" name="dinnerTime" required>
+          <label for="sleepEnd">기상 시간 ☀️</label>
+          <input type="time" id="sleepEnd" name="sleepEnd" required>
+        </div>
+
+        <!-- 식사 -->
+        <div class="form-group">
+          <label>식사 시간 🍽️</label>
+          <div class="meal-row">
+            <div class="meal-item">
+              <label for="breakfastTime">아침</label>
+              <input type="time" id="breakfastTime" name="breakfastTime" required>
+            </div>
+            <div class="meal-item">
+              <label for="lunchTime">점심</label>
+              <input type="time" id="lunchTime" name="lunchTime" required>
+            </div>
+            <div class="meal-item">
+              <label for="dinnerTime">저녁</label>
+              <input type="time" id="dinnerTime" name="dinnerTime" required>
+            </div>
           </div>
         </div>
-        <!-- 운동 시간 입력 -->
+
+        <!-- 운동 시간 (드롭다운) -->
         <div class="form-group">
-          <label for="exerciseTime">운동 시간:</label>
-          <input type="time" id="exerciseTime" name="exerciseTime" required>
+          <label for="exerciseTime">운동 시간 🏃‍♀️</label>
+          <select id="exerciseTime" name="exerciseTime" required>
+            <option value="" disabled selected>운동 시간 선택</option>
+            <option value="0.5">0.5시간</option>
+            <option value="1">1시간</option>
+            <option value="2">2시간</option>
+            <option value="3">3시간</option>
+            <option value="4">4시간</option>
+            <option value="5">5시간</option>
+            <option value="6">6시간</option>
+          </select>
         </div>
-        <!-- 데이터 제출 버튼 -->
-        <button type="submit">입력 제출</button>
+
+        <!-- 기타 활동 시간 (선택) -->
+        <div class="form-group">
+          <label for="otherHours">기타 활동 예상 시간 ⏳ (선택)</label>
+          <input type="number" id="otherHours" name="otherHours" min="0" max="24" step="0.5" placeholder="예: 4" />
+          <small class="hint">수면+식사+운동 시간을 뺀 나머지 시간을 입력하세요. 비워두면 자동 계산됩니다.</small>
+        </div>
+
+        <div class="btn-row">
+          <button type="submit" class="btn primary">입력 제출 ✅</button>
+          <button type="button" id="resetBtn" class="btn ghost">초기화 ✨</button>
+        </div>
       </form>
-      <!-- 결과 출력 영역 -->
-      <div id="result"></div>
+    </section>
+
+    <section class="card result-card">
+      <h2>오늘의 하루 한눈에 보기 🎯</h2>
+      <div class="chart-wrap">
+        <canvas id="routineChart" aria-label="하루 루틴 원그래프" role="img"></canvas>
+      </div>
+      <div id="result" class="result-text"></div>
     </section>
   </main>
-  
-  <!-- JavaScript 파일 연결 -->
+
+  <footer class="footer">
+    <p>귀여운 루틴, 꾸준한 변화 🌷</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
